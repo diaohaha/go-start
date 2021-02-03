@@ -18,7 +18,7 @@ func HttpBuildQuery(params interface{}) (url string, err error) {
 	}
 	paramsVal := reflect.ValueOf(params)
 	for i := 0; i < paramsVal.NumField(); i ++  {
-		itemKey := paramsTyp.Field(i).Name
+		itemKey := paramsTyp.Field(i).Tag.Get("json")
 		itemVal := paramsVal.Field(i).Interface()
 		typ := paramsVal.Field(i).Type()
 		if typ.Kind() == reflect.Map {
@@ -47,7 +47,7 @@ func httpBuildQuery(params interface{}, key string) (url string) {
 	val := reflect.ValueOf(params)
 	if typ.Kind() == reflect.Map || typ.Kind()  == reflect.Struct {
 		for i := 0; i < val.NumField(); i ++ {
-			itemKey := typ.Field(i).Name
+			itemKey := typ.Field(i).Tag.Get("json")
 			itemTyp := val.Field(i).Type()
 			itemVal := val.Field(i).Interface()
 			if itemTyp.Kind() == reflect.Map {
