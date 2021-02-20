@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 // golang 切片
+// 切片作为函数参数时是引用传递 !!!
 
 func intRange(n int) ([]int) {
 	i := 0
