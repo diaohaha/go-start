@@ -22,6 +22,9 @@ func main() {
 	fmt.Println("len:", len(str)) // len 计算的是字节数量，一个汉字占用3个字节
 	fmt.Println("RuneCountInString:", utf8.RuneCountInString(str))
 
+	fmt.Println(str[1])
+
+
 }
 
 
