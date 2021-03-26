@@ -91,9 +91,30 @@ func test4() {
 	s := intRange(10)
 	// ...是golang对可变参数的支持
 	// func append(slice []Type, elems ...Type) []Type
+
+	// 删除index为5的元素
 	s = append(s[:5], s[6:]...)
 	fmt.Println(s)
-	fmt.Println("len(s)=", len(s), "cap(s)=", cap(s))
+	// 删除index为0的元素
+	s = append(s[:0], s[1:]...)
+	fmt.Println(s)
+	// 删除最后一个元素
+	s = s[:len(s)-1]
+	fmt.Println(s)
+
+
+	// 切片引用循环的index也是从0开始
+	fmt.Println("-------切片循环的index-------")
+	// 切片循环的index
+	s1 := intRange(10)
+	fmt.Println(s1)
+	fmt.Println(s1[:3])
+	for index, _ := range s1[4:] {
+		fmt.Print(index, " - ")
+	}
+	fmt.Println()
+	fmt.Println("--------------")
+
 
 
 	//在切片中间插入元素insert element at index;
@@ -109,7 +130,9 @@ func test4() {
 
 
 func main()  {
-	//test1()
+	fmt.Println("test1:")
+	test1()
+	fmt.Println("--------------------")
 	//test2()
 	//test3()
 	test4()
