@@ -22,5 +22,8 @@ func main()  {
 	loc, _ := time.LoadLocation("Local")  // 获取时区
 	t, _ := time.ParseInLocation("2006-01-02 15:04-05", timeStr, loc)
 	fmt.Println("%v", t)
+	
+	// 0值比较
+	nilTime := time.Time{} //赋零值
 
 }
