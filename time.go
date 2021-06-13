@@ -25,5 +25,13 @@ func main()  {
 	
 	// 0值比较
 	nilTime := time.Time{} //赋零值
+	
+	d := 100 * time.Microsecond
+        fmt.Println(d) // Output: 100µs
+	
+	value := 100 // value is of type int
+
+	d2 := time.Duration(value) * time.Millisecond
+	fmt.Println(d2) // Output: 100ms
 
 }
