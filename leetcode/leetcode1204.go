@@ -17,15 +17,15 @@ func equalSubstring(s string, t string, maxCost int) int {
 	n := len(s)
 	l, r := 0, 0
 	usedCost := float64(0)
-	for (r < n) {
+	for r < n {
 		usedCost += math.Abs(float64(rune(t[r]) - rune(s[r])))
 		r += 1
-		if (usedCost > float64(maxCost)) {
+		if usedCost > float64(maxCost) {
 			usedCost -= math.Abs(float64(rune(t[l]) - rune(s[l])))
 			l += 1
 		}
 	}
-	return n-l
+	return n - l
 }
 
 func printInt(s string) {
@@ -35,7 +35,7 @@ func printInt(s string) {
 	fmt.Println()
 }
 
-func main()  {
+func runLeetcode1024() {
 	fmt.Println(equalSubstring("abcd", "bcdf", 3))
 	fmt.Println(equalSubstring("abcd", "acde", 0))
 	printInt("pxezla")

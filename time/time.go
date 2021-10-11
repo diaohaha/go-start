@@ -5,11 +5,11 @@ import (
 	"time"
 )
 
-func main()  {
+func main() {
 
-    // test
+	// test
 
-	now := time.Now()  // 2012-10-31 15:50:13.793654 +0000 UTC
+	now := time.Now() // 2012-10-31 15:50:13.793654 +0000 UTC
 	nowUnix := time.Now().Unix()
 
 	// 时间转字符串
@@ -21,16 +21,16 @@ func main()  {
 
 	//  字符串转时间 (涉及到时区)
 	timeStr := "2020-01-01 10:10:10"
-	loc, _ := time.LoadLocation("Local")  // 获取时区
+	loc, _ := time.LoadLocation("Local") // 获取时区
 	t, _ := time.ParseInLocation("2006-01-02 15:04-05", timeStr, loc)
 	fmt.Println("%v", t)
-	
+
 	// 0值比较
-	nilTime := time.Time{} //赋零值
-	
+	// nilTime := time.Time{} //赋零值
+
 	d := 100 * time.Microsecond
-        fmt.Println(d) // Output: 100µs
-	
+	fmt.Println(d) // Output: 100µs
+
 	value := 100 // value is of type int
 
 	d2 := time.Duration(value) * time.Millisecond

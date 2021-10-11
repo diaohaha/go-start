@@ -29,7 +29,7 @@ func lengthOfLongestSubstring(s string) int {
 	return max
 }
 
-func main() {
+func runLeetcode3() {
 	i := lengthOfLongestSubstring("abcabcbb")
 	fmt.Println(i)
 }

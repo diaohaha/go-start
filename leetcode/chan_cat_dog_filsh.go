@@ -24,7 +24,7 @@ func (c *Counter) Get() uint32 {
 	return res
 }
 
-func main() {
+func runChanCatdogFish() {
 	catCh := make(chan int, 1)
 	dogCh := make(chan int, 1)
 	fishCh := make(chan int, 1)

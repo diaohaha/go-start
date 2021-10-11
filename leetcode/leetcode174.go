@@ -18,9 +18,8 @@ func calculateMinimumHP(dungeon [][]int) int {
 	return calculateMinimumHPFunc(newdungeon, n-1, m-1)
 }
 
-
 func calculateMinimumHPFunc(dungeon [][]int, m int, n int) int {
-	if (m > 0 && n > 0) {
+	if m > 0 && n > 0 {
 		v1 := calculateMinimumHPFunc(dungeon, m, n-1)
 		v2 := calculateMinimumHPFunc(dungeon, m-1, n)
 		if v1 > v2 {
@@ -36,14 +35,14 @@ func calculateMinimumHPFunc(dungeon [][]int, m int, n int) int {
 				return v1 - dungeon[m][n]
 			}
 		}
-	} else if (m == 0 && n > 0) {
+	} else if m == 0 && n > 0 {
 		v := calculateMinimumHPFunc(dungeon, m, n-1)
 		if (v - dungeon[m][n]) < 1 {
 			return 1
 		} else {
 			return v - dungeon[m][n]
 		}
-	} else if (m > 0 && n == 0) {
+	} else if m > 0 && n == 0 {
 		v := calculateMinimumHPFunc(dungeon, m-1, n)
 		if (v - dungeon[m][n]) < 1 {
 			return 1
@@ -60,7 +59,7 @@ func calculateMinimumHPFunc(dungeon [][]int, m int, n int) int {
 	}
 }
 
-func main()  {
+func runLeetcode174() {
 	test := [][]int{
 		[]int{-2, -3, 3},
 		[]int{-5, -10, 1},
@@ -70,7 +69,7 @@ func main()  {
 	fmt.Println(calculateMinimumHP(test))
 
 	test2 := [][]int{
-		[]int{0,0},
+		[]int{0, 0},
 	}
 	fmt.Println(test2)
 	fmt.Println(calculateMinimumHP(test2))

@@ -83,7 +83,7 @@ func (this *LRUCache) removeTail() *DLinkedNode {
 	return node
 }
 
-func main() {
+func runLeetcode146() {
 	obj := Constructor(2)
 	fmt.Println("put 1")
 	obj.Put(1, 1)

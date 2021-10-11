@@ -5,7 +5,7 @@ import "fmt"
 // golang 切片
 // 切片作为函数参数时是引用传递 !!!
 
-func intRange(n int) ([]int) {
+func intRange(n int) []int {
 	i := 0
 	res := []int{}
 	for i < n {
@@ -14,7 +14,6 @@ func intRange(n int) ([]int) {
 	}
 	return res
 }
-
 
 func test1() {
 	// ** 切片是一个引用类型, 因此当引用改变其中元素的值时候，其他的所有引用都会改变该值。
@@ -52,13 +51,13 @@ func test2() {
 	return
 }
 
-func test3()  {
+func test3() {
 	s := intRange(20)
-	s1 := s[:]   // 引用一个切片
+	s1 := s[:] // 引用一个切片
 	fmt.Println(s1)
 	s2 := s
 	fmt.Println(s2)
-	s3 := s[0:10:30]  // 从切片或数组 引用指定长度和容量的切片  30-3就是新slice的容量 30不能超过当前slice容量 否则panic
+	s3 := s[0:10:30] // 从切片或数组 引用指定长度和容量的切片  30-3就是新slice的容量 30不能超过当前slice容量 否则panic
 	fmt.Println(s3)
 	fmt.Println(len(s3), cap(s3))
 
@@ -83,7 +82,6 @@ func test3()  {
 	fmt.Println(aa)
 }
 
-
 func test4() {
 	// 切片的 删除 和 插入
 
@@ -102,7 +100,6 @@ func test4() {
 	s = s[:len(s)-1]
 	fmt.Println(s)
 
-
 	// 切片引用循环的index也是从0开始
 	fmt.Println("-------切片循环的index-------")
 	// 切片循环的index
@@ -115,21 +112,18 @@ func test4() {
 	fmt.Println()
 	fmt.Println("--------------")
 
-
-
 	//在切片中间插入元素insert element at index;
 	//注意：保存后部剩余元素，必须新建一个临时切片
 	ss := intRange(10)
 	index := 5
-	rear := append([]int{},ss[index:]...)
-	ss=append(ss[0:index],450)
-	ss=append(ss,rear...)
+	rear := append([]int{}, ss[index:]...)
+	ss = append(ss[0:index], 450)
+	ss = append(ss, rear...)
 	fmt.Println(ss)
 	fmt.Println("len(ss)=", len(ss), "cap(ss)=", cap(ss))
 }
 
-
-func main()  {
+func testIslice() {
 	fmt.Println("test1:")
 	test1()
 	fmt.Println("--------------------")

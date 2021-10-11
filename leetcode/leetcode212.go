@@ -3,18 +3,16 @@ package main
 import "fmt"
 
 type TireNode struct {
-	Val byte
+	Val   byte
 	Nodes map[byte]*TireNode
-	Word string
+	Word  string
 }
 
 type Question struct {
-	MatchWords  map[string]bool
+	MatchWords map[string]bool
 }
 
-
-
-func (q *Question)backtracking(board [][]byte, row int, col int, node *TireNode) {
+func (q *Question) backtracking(board [][]byte, row int, col int, node *TireNode) {
 	letter := board[row][col]
 	curNode := node.Nodes[letter]
 
@@ -32,7 +30,7 @@ func (q *Question)backtracking(board [][]byte, row int, col int, node *TireNode)
 		[]int{-1, 0},
 	}
 
-	for _, offset := range neighbors{
+	for _, offset := range neighbors {
 		newRow := row + offset[0]
 		newCol := col + offset[1]
 		if newRow < 0 || newCol < 0 || newRow >= len(board) || newCol >= len(board[0]) {
@@ -42,7 +40,7 @@ func (q *Question)backtracking(board [][]byte, row int, col int, node *TireNode)
 		if _, ok := curNode.Nodes[c]; !ok {
 			continue
 		}
- 		q.backtracking(board, newRow, newCol, curNode)
+		q.backtracking(board, newRow, newCol, curNode)
 	}
 
 	board[row][col] = letter
@@ -51,9 +49,9 @@ func (q *Question)backtracking(board [][]byte, row int, col int, node *TireNode)
 func findWords(board [][]byte, words []string) []string {
 	// 构造前缀树
 	tree := &TireNode{
-		Val: byte('$'),
+		Val:   byte('$'),
 		Nodes: map[byte]*TireNode{},
-		Word: "",
+		Word:  "",
 	}
 	for _, word := range words {
 		curNode := tree
@@ -62,9 +60,9 @@ func findWords(board [][]byte, words []string) []string {
 				curNode = curNode.Nodes[c]
 			} else {
 				newNode := &TireNode{
-					Val: c,
+					Val:   c,
 					Nodes: map[byte]*TireNode{},
-					Word: "",
+					Word:  "",
 				}
 				curNode.Nodes[c] = newNode
 				curNode = newNode
@@ -93,7 +91,7 @@ func findWords(board [][]byte, words []string) []string {
 	return res
 }
 
-func main()  {
+func runLeetcode212() {
 	board := [][]byte{
 		[]byte{'o', 'a', 'a', 'n'},
 		[]byte{'e', 't', 'a', 'e'},

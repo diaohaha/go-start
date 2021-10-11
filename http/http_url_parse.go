@@ -6,7 +6,7 @@ import (
 	"net/url"
 )
 
-func main()  {
+func testHttpParse() {
 
 	// url参数中有换行符是解析要替换
 	urlStr := "http://www.baidu.com?param=123"

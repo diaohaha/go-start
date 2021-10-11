@@ -100,7 +100,7 @@ type Img struct {
 	Height int    `json:"height"`
 }
 
-func main() {
+func testHttpBulidQuery() {
 	imgs := []Img{
 		{
 			Src:    "apple",

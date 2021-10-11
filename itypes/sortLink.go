@@ -43,7 +43,7 @@ func (n *LinkNode) Print() {
 	}
 }
 
-func main() {
+func testSortLink() {
 	head := new(LinkNode)
 	head.Add(97, "gaoda")
 	head.Add(100, "chenhua")

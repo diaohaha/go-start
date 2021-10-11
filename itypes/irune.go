@@ -8,7 +8,7 @@ import (
 //  type rune = int32
 
 
-func main() {
+func testRune() {
 	// rune 可以进行整形运算
 	r1 := rune('高')
 	r2 := rune('a')
