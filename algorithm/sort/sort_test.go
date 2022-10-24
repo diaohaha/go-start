@@ -108,6 +108,51 @@ func TestInsertSort(t *testing.T) {
 	InsertSort(arr, len(arr))
 }
 
+func merge(arr *[]int, begin, mid, end int) {
+	temp := []int{}
+	i := begin
+	j := mid + 1
+	for i <= mid && j <= end {
+		if (*arr)[i] < (*arr)[j] {
+			temp = append(temp, (*arr)[i])
+			i += 1
+		} else {
+			temp = append(temp, (*arr)[j])
+			j += 1
+		}
+	}
+	for i <= mid {
+		temp = append(temp, (*arr)[i])
+		i += 1
+	}
+	for j <= end {
+		temp = append(temp, (*arr)[j])
+		j += 1
+	}
+	for k := begin; k <= end; k += 1 {
+		(*arr)[k] = temp[k-begin]
+	}
+}
+
+// 合并排序
+func MergeSort(arr *[]int, begin, end int) {
+
+	if begin < end {
+		mid := (begin + end) / 2
+		MergeSort(arr, begin, mid)
+		MergeSort(arr, mid+1, end)
+		merge(arr, begin, mid, end)
+	}
+}
+
+// go test -v algorithm/sort/sort_test.go -test.run TestMergeSort
+func TestMergeSort(t *testing.T) {
+	arr := genArr(10)
+	fmt.Println(arr)
+	MergeSort(&arr, 0, len(arr)-1)
+	fmt.Println(arr)
+}
+
 // go test -v algorithm/sort/sort_test.go -test.run TestTimeConsume
 func TestTimeConsume(t *testing.T) {
 	originArr := genArr(100000)
@@ -125,4 +170,11 @@ func TestTimeConsume(t *testing.T) {
 	BubleSort(arr, 0, len(arr)-1)
 	eTime = time.Now().UnixMilli()
 	t.Log("buble sort consume:", eTime-sTime, "ms")
+
+	sTime = time.Now().UnixMilli()
+	copy(arr, originArr)
+	MergeSort(&arr, 0, len(arr)-1)
+	eTime = time.Now().UnixMilli()
+	t.Log("merge sort consume:", eTime-sTime, "ms")
+
 }
