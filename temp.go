@@ -40,3 +40,34 @@ func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 		return float64(nums[midInex+1])
 	}
 }
+
+// 回溯算法要素  收集结果 减枝  递归搜索（通常是DFS）
+func leetcode22(n int) (res []string) {
+	var backtrace func(l int, r int, item string)
+	// golang 不支持函数内直接定义函数
+	backtrace = func(l int, r int, item string) {
+
+		// 收集结果
+		if l == 0 && r == 0 {
+			res = append(res, item)
+			return
+		}
+
+		// DFS
+		if l > 0 {
+			item += "("
+			backtrace(l-1, r, item)
+			item = item[:len(item)-1]
+		}
+
+		if r > 0 && r > l { // r<l时 剪枝
+			item += ")"
+			backtrace(l, r-1, item)
+		}
+
+		return
+	}
+
+	backtrace(n, n, "")
+	return
+}
